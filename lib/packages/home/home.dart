@@ -20,7 +20,9 @@ class _HomePage extends State<HomePage>{
         // User is not signed in
         if (!snapshot.hasData) {
           return SignInScreen(
-              providerConfigs: []
+              providerConfigs: [
+                EmailProviderConfiguration(),
+              ]
           );
         }
 
