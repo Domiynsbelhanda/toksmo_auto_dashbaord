@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:toksmo_auto_dashbaord/packages/marque/marque.dart';
 
 class vehiculeIndex extends StatefulWidget{
   @override
@@ -9,6 +10,7 @@ class vehiculeIndex extends StatefulWidget{
 }
 
 class _vehiculeIndex extends State<vehiculeIndex>{
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -30,27 +32,9 @@ class _vehiculeIndex extends State<vehiculeIndex>{
                   children: [
                     OutlinedButton(
                       onPressed: () {
-                        showModalBottomSheet<void>(
-                          // context and builder are
-                          // required properties in this widget
-                          context: context,
-                          builder: (BuildContext context) {
-                            // we set up a container inside which
-                            // we create center column and display text
-
-                            // Returning SizedBox instead of a Container
-                            return SizedBox(
-                              height: 200,
-                              child: Center(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                    children: const <Widget>[
-                                      Text('GeeksforGeeks'),
-                                    ],
-                                ),
-                              ),
-                            );
-                          }
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Marque('vehicule')),
                         );
                       },
                       child: Text('ADD MARQUE'),

@@ -41,6 +41,7 @@ dependencies:
   flutterfire_ui: ^0.4.2+2
   image_picker: ^0.8.5+3
   data_tables: ^1.4.0
+  uuid: ^3.0.6
 
 dev_dependencies:
   flutter_test:
