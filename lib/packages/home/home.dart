@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterfire_ui/auth.dart';
+import 'package:toksmo_auto_dashbaord/packages/home/dashboard.dart';
 
 class HomePage extends StatefulWidget{
   @override
@@ -27,7 +28,7 @@ class _HomePage extends State<HomePage>{
         }
 
         // Render your application if authenticated
-        return Container();
+        return Dashboard();
       },
     );;
   }
