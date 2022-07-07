@@ -1,4 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:toksmo_auto_dashbaord/main.dart';
+import 'package:toksmo_auto_dashbaord/packages/vehicule/index.dart';
 
 class Dashboard extends StatefulWidget{
   @override
@@ -25,6 +28,10 @@ class _Dashboard extends State<Dashboard>{
             ListTile(
               title: const Text('VEHICULE'),
               onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => vehiculeIndex()),
+                );
               },
             ),
             ListTile(
@@ -60,6 +67,11 @@ class _Dashboard extends State<Dashboard>{
             ListTile(
               title: const Text('DECONNEXION'),
               onTap: () {
+                FirebaseAuth.instance.signOut();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MyApp()),
+                );
               },
             ),
           ],
