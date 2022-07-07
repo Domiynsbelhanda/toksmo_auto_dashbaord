@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterfire_ui/auth.dart';
 
 class HomePage extends StatefulWidget{
   @override
@@ -18,7 +19,9 @@ class _HomePage extends State<HomePage>{
       builder: (context, snapshot) {
         // User is not signed in
         if (!snapshot.hasData) {
-          // ...
+          return SignInScreen(
+              providerConfigs: []
+          );
         }
 
         // Render your application if authenticated
