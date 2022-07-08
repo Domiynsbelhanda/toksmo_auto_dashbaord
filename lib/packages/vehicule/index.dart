@@ -4,6 +4,8 @@ import 'package:toksmo_auto_dashbaord/packages/marque/marque.dart';
 import 'package:toksmo_auto_dashbaord/widget/itemTable.dart';
 import 'package:toksmo_auto_dashbaord/widget/marqueTable.dart';
 
+import '../marque/item.dart';
+
 class vehiculeIndex extends StatefulWidget{
   String type;
   vehiculeIndex(this.type);
@@ -27,6 +29,8 @@ class _vehiculeIndex extends State<vehiculeIndex>{
   Widget build(BuildContext context) {
     final Stream<QuerySnapshot> _marqueStream = FirebaseFirestore.instance
         .collection('donnees').doc('${widget.type}').collection('marque').snapshots();
+    final Stream<QuerySnapshot> _itemStream = FirebaseFirestore.instance
+        .collection('donnees').doc('${widget.type}').collection('item').snapshots();
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
@@ -55,7 +59,12 @@ class _vehiculeIndex extends State<vehiculeIndex>{
                     ),
 
                     OutlinedButton(
-                      onPressed: () { },
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Item(type: '${widget.type}')),
+                        );
+                      },
                       child: Text('ADD ITEM'),
                     )
                   ],
@@ -115,8 +124,21 @@ class _vehiculeIndex extends State<vehiculeIndex>{
                           child: Padding(
                             padding: const EdgeInsets.all(16.0),
                             child: Center(
-                              child: Text(
-                                  '120 ITEMS'
+                              child: StreamBuilder<QuerySnapshot>(
+                                stream: _itemStream,
+                                builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                                  if (snapshot.hasError) {
+                                    return Text('Error');
+                                  }
+
+                                  if (snapshot.connectionState == ConnectionState.waiting) {
+                                    return Text("Loading");
+                                  }
+
+                                  return Text(
+                                      '${snapshot.data!.docs.length.toString()} Item (s)'
+                                  );
+                                },
                               ),
                             ),
                           ),
@@ -131,7 +153,7 @@ class _vehiculeIndex extends State<vehiculeIndex>{
                 Container(
                   child: datas == 'marque' ?
                   marqueTable(context, widget.type, _marqueStream) :
-                  itemTable(context, widget.type),
+                  itemTable(context, widget.type, _itemStream),
                 ),
               ],
             ),
