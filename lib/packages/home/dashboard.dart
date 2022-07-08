@@ -59,12 +59,12 @@ class _Dashboard extends State<Dashboard>{
               },
             ),
             ListTile(
-              title: const Text('TRUCK'),
+              title: const Text('TRACK'),
               onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => vehiculeIndex(
-                      'truck'
+                      'track'
                   )),
                 );
               },
@@ -97,7 +97,7 @@ class _Dashboard extends State<Dashboard>{
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => vehiculeIndex(
-                      'accesoire'
+                      'accessoire'
                   )),
                 );
               },

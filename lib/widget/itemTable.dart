@@ -63,7 +63,7 @@ Widget itemTable (BuildContext context, String type, stream){
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '${data['name']}',
+                                '${data['code']} / ${data['name']}',
                                 style: TextStyle(
                                     fontWeight: FontWeight.normal,
                                     fontSize: 18
