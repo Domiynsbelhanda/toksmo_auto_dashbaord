@@ -132,9 +132,11 @@ class _vehiculeIndex extends State<vehiculeIndex>{
 
                 SizedBox(height: 16.0,),
 
-                datas == 'marque' ?
-                    marqueTable(context, widget.type) :
-                    itemTable(context, widget.type),
+                Container(
+                  child: datas == 'marque' ?
+                  marqueTable(context, widget.type, _marqueStream) :
+                  itemTable(context, widget.type),
+                ),
               ],
             ),
           ),

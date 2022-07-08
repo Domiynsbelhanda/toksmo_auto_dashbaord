@@ -5,6 +5,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:toksmo_auto_dashbaord/widget/alert.dart';
+import 'package:uuid/uuid.dart';
 
 class Marque extends StatefulWidget {
 
@@ -53,23 +54,28 @@ class _Marque extends State<Marque> {
           .child(destination);
       String downloadURL;
 
+      var uuid = Uuid();
+      String keys = uuid.v1().toString();
+
       UploadTask uploadTask = storageReference.putFile(_photo!);
       downloadURL = await (await uploadTask).ref.getDownloadURL();
-      CollectionReference marques = FirebaseFirestore.instance
+      DocumentReference marques = FirebaseFirestore.instance
           .collection('donnees')
           .doc('${widget.type}')
-          .collection('marque');
+          .collection('marque')
+          .doc('$keys');
       marques
-          .add({
+          .set({
             'name': name.text,
             'image': downloadURL,
+            'key' : keys
           });
       Navigator.pop(context);
     } catch (e) {
       print('error occured');
     }
   }
-  
+
   void _showPicker(context) {
     showModalBottomSheet(
         context: context,
