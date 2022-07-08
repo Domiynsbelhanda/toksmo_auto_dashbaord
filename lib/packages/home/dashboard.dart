@@ -50,26 +50,56 @@ class _Dashboard extends State<Dashboard>{
             ListTile(
               title: const Text('CAMION'),
               onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => vehiculeIndex(
+                      'camion'
+                  )),
+                );
               },
             ),
             ListTile(
               title: const Text('TRUCK'),
               onTap: () {
-              },
-            ),
-            ListTile(
-              title: const Text('PIECE'),
-              onTap: () {
-              },
-            ),
-            ListTile(
-              title: const Text('ACCESSOIRE'),
-              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => vehiculeIndex(
+                      'truck'
+                  )),
+                );
               },
             ),
             ListTile(
               title: const Text('LOCATION'),
               onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => vehiculeIndex(
+                      'location'
+                  )),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('PIECE'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => vehiculeIndex(
+                      'piece'
+                  )),
+                );
+              },
+            ),
+            ListTile(
+              title: const Text('ACCESSOIRE'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => vehiculeIndex(
+                      'accesoire'
+                  )),
+                );
               },
             ),
             ListTile(
