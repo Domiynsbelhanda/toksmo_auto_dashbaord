@@ -30,7 +30,9 @@ class _Dashboard extends State<Dashboard>{
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => vehiculeIndex()),
+                  MaterialPageRoute(builder: (context) => vehiculeIndex(
+                    'vehicule'
+                  )),
                 );
               },
             ),
