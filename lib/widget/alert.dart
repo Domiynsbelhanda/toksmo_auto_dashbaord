@@ -36,10 +36,8 @@ Future<void> delete(BuildContext context, String titre, String content, String t
             onPressed: () {
               FirebaseFirestore.instance.collection('donnees')
                   .doc(type).collection(obj)
-                  .doc(key).delete().then((value)
-              => showMyDialog(context, '$titre Supprimé', '$type a été supprimé avec succès'))
-                  .catchError((error) =>
-                  showMyDialog(context, '$titre Supprimé', '$type n\'a pas été supprimé, Erreur : ${error}'));
+                  .doc(key).delete();
+              Navigator.pop(context);
             },
           ),
 

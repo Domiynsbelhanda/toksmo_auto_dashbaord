@@ -17,14 +17,10 @@ class vehiculeIndex extends StatefulWidget{
 
 class _vehiculeIndex extends State<vehiculeIndex>{
 
-  String? title;
   String datas = 'marque';
 
   @override
   void initState() {
-    widget.type == 'vehicule' ?
-        title = 'GESTION DES VEHICULES' :
-        title = '';
   }
 
   @override
@@ -35,7 +31,7 @@ class _vehiculeIndex extends State<vehiculeIndex>{
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          '$title'
+          'GESTION ${widget.type.toUpperCase()}'
         ),
       ),
       body: SingleChildScrollView(
@@ -52,7 +48,7 @@ class _vehiculeIndex extends State<vehiculeIndex>{
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => Marque('vehicule')),
+                          MaterialPageRoute(builder: (context) => Marque(type: '${widget.type}')),
                         );
                       },
                       child: Text('ADD MARQUE'),

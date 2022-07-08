@@ -76,7 +76,15 @@ Widget marqueTable (BuildContext context, String type, stream){
                                       onPressed: () {
                                         Navigator.push(
                                           context,
-                                          MaterialPageRoute(builder: (context) => Marque('vehicule')),
+                                          MaterialPageRoute(builder: (context) => Marque(
+                                              type: '$type',
+                                            marque: {
+                                                'name' : data['name'],
+                                              'image' : data['image'],
+                                              'key': data['key']
+                                            },
+                                          )
+                                          ),
                                         );
                                       },
                                       child: Text('MODIFIER'),
@@ -84,7 +92,7 @@ Widget marqueTable (BuildContext context, String type, stream){
 
                                     OutlinedButton(
                                       onPressed: () {
-
+                                        delete(context, '${data['name']}', 'Voulez-vous supprimé?', type, 'marque', '${data['key']}');
                                       },
                                       child: Text(
                                           'SUPPRIMER',

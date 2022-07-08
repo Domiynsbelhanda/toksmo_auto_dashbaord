@@ -39,6 +39,12 @@ class _Dashboard extends State<Dashboard>{
             ListTile(
               title: const Text('ENGIN'),
               onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => vehiculeIndex(
+                      'engin'
+                  )),
+                );
               },
             ),
             ListTile(
