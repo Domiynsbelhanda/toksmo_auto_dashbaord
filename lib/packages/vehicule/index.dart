@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:toksmo_auto_dashbaord/packages/marque/marque.dart';
+import 'package:toksmo_auto_dashbaord/packages/marque/modele.dart';
 import 'package:toksmo_auto_dashbaord/widget/itemTable.dart';
 import 'package:toksmo_auto_dashbaord/widget/marqueTable.dart';
 
+import '../../widget/modeleTable.dart';
 import '../marque/item.dart';
 
 class vehiculeIndex extends StatefulWidget{
@@ -31,6 +33,8 @@ class _vehiculeIndex extends State<vehiculeIndex>{
         .collection('donnees').doc('${widget.type}').collection('marque').snapshots();
     final Stream<QuerySnapshot> _itemStream = FirebaseFirestore.instance
         .collection('donnees').doc('${widget.type}').collection('item').snapshots();
+    final Stream<QuerySnapshot> _modeleStream = FirebaseFirestore.instance
+        .collection('donnees').doc('${widget.type}').collection('modele').snapshots();
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
@@ -56,6 +60,16 @@ class _vehiculeIndex extends State<vehiculeIndex>{
                         );
                       },
                       child: Text('ADD MARQUE'),
+                    ),
+
+                    OutlinedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Modele(type: '${widget.type}')),
+                        );
+                      },
+                      child: Text('ADD MODELE'),
                     ),
 
                     OutlinedButton(
@@ -114,6 +128,41 @@ class _vehiculeIndex extends State<vehiculeIndex>{
                     GestureDetector(
                       onTap: (){
                         setState(() {
+                          datas = 'modele';
+                        });
+                      },
+                      child: Container(
+                        child: Card(
+                          elevation: 5.0,
+                          color: datas == 'modele' ? Colors.lightBlueAccent : Colors.white,
+                          child: Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Center(
+                              child: StreamBuilder<QuerySnapshot>(
+                                stream: _marqueStream,
+                                builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                                  if (snapshot.hasError) {
+                                    return Text('Error');
+                                  }
+
+                                  if (snapshot.connectionState == ConnectionState.waiting) {
+                                    return Text("Loading");
+                                  }
+
+                                  return Text(
+                                      '${snapshot.data!.docs.length.toString()} Modele(s)'
+                                  );
+                                },
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    GestureDetector(
+                      onTap: (){
+                        setState(() {
                           datas = 'item';
                         });
                       },
@@ -153,7 +202,9 @@ class _vehiculeIndex extends State<vehiculeIndex>{
                 Container(
                   child: datas == 'marque' ?
                   marqueTable(context, widget.type, _marqueStream) :
-                  itemTable(context, widget.type, _itemStream),
+                      datas == 'item' ?
+                  itemTable(context, widget.type, _itemStream) :
+                  modeleTable(context, widget.type, _modeleStream),
                 ),
               ],
             ),

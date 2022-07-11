@@ -31,7 +31,6 @@ class _Item extends State<Item> {
   TextEditingController etatController = TextEditingController();
   TextEditingController prixController = TextEditingController();
   TextEditingController type_carrosserieController = TextEditingController();
-  TextEditingController modeleController = TextEditingController();
   TextEditingController poignetController = TextEditingController();
   TextEditingController carburantController = TextEditingController();
   TextEditingController couleurController = TextEditingController();
@@ -43,6 +42,7 @@ class _Item extends State<Item> {
   TextEditingController cylindreController = TextEditingController();
   TextEditingController conduiteController = TextEditingController();
   String? marque;
+  String? modele;
   BuildContext? contexte;
 
   FirebaseStorage storage =
@@ -82,9 +82,8 @@ class _Item extends State<Item> {
           'etat': etatController.text,
           'prix': prixController.text,
           'marque': marque,
-          'lieu': modeleController.text,
           'carrosserie': type_carrosserieController.text,
-          'modele': modeleController.text,
+          'modele': modele,
           'poignet': poignetController.text,
           'carburant': carburantController.text,
           'couleur': couleurController.text,
@@ -107,7 +106,7 @@ class _Item extends State<Item> {
           'marque': marque,
           'lieu': modeleController.text,
           'carrosserie': type_carrosserieController.text,
-          'modele': modeleController.text,
+          'modele': modele,
           'poignet': poignetController.text,
           'carburant': carburantController.text,
           'couleur': couleurController.text,
@@ -128,7 +127,7 @@ class _Item extends State<Item> {
           'marque': marque,
           'lieu': modeleController.text,
           'carrosserie': type_carrosserieController.text,
-          'modele': modeleController.text,
+          'modele': modele,
           'poignet': poignetController.text,
           'carburant': carburantController.text,
           'couleur': couleurController.text,
@@ -150,7 +149,7 @@ class _Item extends State<Item> {
           'marque': marque,
           'lieu': modeleController.text,
           'carrosserie': type_carrosserieController.text,
-          'modele': modeleController.text,
+          'modele': modele,
           'poignet': poignetController.text,
           'carburant': carburantController.text,
           'couleur': couleurController.text,
@@ -172,7 +171,7 @@ class _Item extends State<Item> {
           'marque': marque,
           'lieu': modeleController.text,
           'carrosserie': type_carrosserieController.text,
-          'modele': modeleController.text,
+          'modele': modele,
           'poignet': poignetController.text,
           'carburant': carburantController.text,
           'couleur': couleurController.text,
@@ -191,7 +190,7 @@ class _Item extends State<Item> {
           'code': codeController.text,
           'etat': etatController.text,
           'prix': prixController.text,
-          'modele': modeleController.text,
+          'modele': modele,
           'image': images,
           "timestamp": FieldValue.serverTimestamp(),
         };
@@ -203,7 +202,7 @@ class _Item extends State<Item> {
           'code': codeController.text,
           'etat': etatController.text,
           'prix': prixController.text,
-          'modele': modeleController.text,
+          'modele': modele,
           'couleur': couleurController.text,
           'image': images,
           "timestamp": FieldValue.serverTimestamp(),
@@ -264,7 +263,7 @@ class _Item extends State<Item> {
               'marque': marque,
               'lieu': modeleController.text,
               'carrosserie': type_carrosserieController.text,
-              'modele': modeleController.text,
+              'modele': modele,
               'poignet': poignetController.text,
               'carburant': carburantController.text,
               'couleur': couleurController.text,
@@ -287,7 +286,7 @@ class _Item extends State<Item> {
               'marque': marque,
               'lieu': modeleController.text,
               'carrosserie': type_carrosserieController.text,
-              'modele': modeleController.text,
+              'modele': modele,
               'poignet': poignetController.text,
               'carburant': carburantController.text,
               'couleur': couleurController.text,
@@ -308,7 +307,7 @@ class _Item extends State<Item> {
               'marque': marque,
               'lieu': modeleController.text,
               'carrosserie': type_carrosserieController.text,
-              'modele': modeleController.text,
+              'modele': modele,
               'poignet': poignetController.text,
               'carburant': carburantController.text,
               'couleur': couleurController.text,
@@ -330,7 +329,7 @@ class _Item extends State<Item> {
               'marque': marque,
               'lieu': modeleController.text,
               'carrosserie': type_carrosserieController.text,
-              'modele': modeleController.text,
+              'modele': modele,
               'poignet': poignetController.text,
               'carburant': carburantController.text,
               'couleur': couleurController.text,
@@ -352,7 +351,7 @@ class _Item extends State<Item> {
               'marque': marque,
               'lieu': modeleController.text,
               'carrosserie': type_carrosserieController.text,
-              'modele': modeleController.text,
+              'modele': modele,
               'poignet': poignetController.text,
               'carburant': carburantController.text,
               'couleur': couleurController.text,
@@ -370,7 +369,7 @@ class _Item extends State<Item> {
               'code': codeController.text,
               'etat': etatController.text,
               'prix': prixController.text,
-              'modele': modeleController.text,
+              'modele': modele,
               'image': images,
               "timestamp": FieldValue.serverTimestamp(),
             };
@@ -381,7 +380,7 @@ class _Item extends State<Item> {
               'code': codeController.text,
               'etat': etatController.text,
               'prix': prixController.text,
-              'modele': modeleController.text,
+              'modele': modele,
               'couleur': couleurController.text,
               'image': images,
               "timestamp": FieldValue.serverTimestamp(),
@@ -432,7 +431,7 @@ class _Item extends State<Item> {
       codeController.text = widget.marque['code'].toString();
       etatController.text = widget.marque['etat'].toString();
       prixController.text = widget.marque['prix'].toString();
-      modeleController.text = widget.marque['modele'].toString();
+      modele = widget.marque['modele'].toString();
       type_carrosserieController.text = widget.marque['carrosserie'].toString();
       poignetController.text = widget.marque['poignet'].toString();
       carburantController.text = widget.marque['carburant'].toString();
@@ -451,6 +450,8 @@ class _Item extends State<Item> {
     // TODO: implement build
     final Stream<QuerySnapshot> _marqueStream = FirebaseFirestore.instance
         .collection('donnees').doc('${widget.type}').collection('marque').snapshots();
+    final Stream<QuerySnapshot> _modeleStream = FirebaseFirestore.instance
+        .collection('donnees').doc('${widget.type}').collection('modeled').snapshots();
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -554,6 +555,49 @@ class _Item extends State<Item> {
                   ),
                 ),
 
+              SizedBox(height: 8.0),
+
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      Text(
+                        'Modele : ',
+                        style: TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.bold
+                        ),
+                      ),
+                      StreamBuilder<QuerySnapshot>(
+                        stream: _modeleStream,
+                        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+                          if (snapshot.hasError) {
+                            return Text('Something went wrong');
+                          }
+
+                          if (snapshot.connectionState == ConnectionState.waiting) {
+                            return Text("Loading");
+                          }
+
+                          return DropdownButton(
+                            value: modele,
+                            items: snapshot.data!.docs.map((DocumentSnapshot document) {
+                              Map<String, dynamic> data = document.data()! as Map<String, dynamic>;
+                              return DropdownMenuItem
+                                (child: Text('${data['name']}'),value: '${data['name']}');
+                            }).toList(),
+                            onChanged: (String? newValue){
+                              setState(() {
+                                modele = newValue!;
+                              });
+                            },
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+
               SizedBox(height: 16.0),
 
                 Padding(
@@ -563,26 +607,6 @@ class _Item extends State<Item> {
                     keyboardType: TextInputType.text,
                     decoration: InputDecoration(
                         labelText: 'Nom',
-                        labelStyle: TextStyle(
-                          fontSize: MediaQuery.of(context).size.width / 23,
-                          color: Colors.grey,
-                        ),
-                        hintStyle: TextStyle(
-                            color: Colors.grey,
-                            fontSize: MediaQuery.of(context).size.width / 25
-                        )
-                    ),
-                    style: TextStyle(fontSize: MediaQuery.of(context).size.width / 22),
-                  ),
-                ),
-
-                Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: TextField(
-                    controller: modeleController,
-                    keyboardType: TextInputType.text,
-                    decoration: InputDecoration(
-                        labelText: 'Modele',
                         labelStyle: TextStyle(
                           fontSize: MediaQuery.of(context).size.width / 23,
                           color: Colors.grey,
