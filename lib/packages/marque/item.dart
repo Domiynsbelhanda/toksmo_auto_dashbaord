@@ -104,7 +104,7 @@ class _Item extends State<Item> {
           'etat': etatController.text,
           'prix': prixController.text,
           'marque': marque,
-          'lieu': modeleController.text,
+          'lieu': modele,
           'carrosserie': type_carrosserieController.text,
           'modele': modele,
           'poignet': poignetController.text,
@@ -125,7 +125,7 @@ class _Item extends State<Item> {
           'etat': etatController.text,
           'prix': prixController.text,
           'marque': marque,
-          'lieu': modeleController.text,
+          'lieu': modele,
           'carrosserie': type_carrosserieController.text,
           'modele': modele,
           'poignet': poignetController.text,
@@ -147,7 +147,7 @@ class _Item extends State<Item> {
           'etat': etatController.text,
           'prix': prixController.text,
           'marque': marque,
-          'lieu': modeleController.text,
+          'lieu': modele,
           'carrosserie': type_carrosserieController.text,
           'modele': modele,
           'poignet': poignetController.text,
@@ -169,7 +169,7 @@ class _Item extends State<Item> {
           'etat': etatController.text,
           'prix': prixController.text,
           'marque': marque,
-          'lieu': modeleController.text,
+          'lieu': modele,
           'carrosserie': type_carrosserieController.text,
           'modele': modele,
           'poignet': poignetController.text,
@@ -261,7 +261,7 @@ class _Item extends State<Item> {
               'etat': etatController.text,
               'prix': prixController.text,
               'marque': marque,
-              'lieu': modeleController.text,
+              'lieu': modele,
               'carrosserie': type_carrosserieController.text,
               'modele': modele,
               'poignet': poignetController.text,
@@ -284,7 +284,7 @@ class _Item extends State<Item> {
               'etat': etatController.text,
               'prix': prixController.text,
               'marque': marque,
-              'lieu': modeleController.text,
+              'lieu': modele,
               'carrosserie': type_carrosserieController.text,
               'modele': modele,
               'poignet': poignetController.text,
@@ -305,7 +305,7 @@ class _Item extends State<Item> {
               'etat': etatController.text,
               'prix': prixController.text,
               'marque': marque,
-              'lieu': modeleController.text,
+              'lieu': modele,
               'carrosserie': type_carrosserieController.text,
               'modele': modele,
               'poignet': poignetController.text,
@@ -327,7 +327,7 @@ class _Item extends State<Item> {
               'etat': etatController.text,
               'prix': prixController.text,
               'marque': marque,
-              'lieu': modeleController.text,
+              'lieu': modele,
               'carrosserie': type_carrosserieController.text,
               'modele': modele,
               'poignet': poignetController.text,
@@ -349,7 +349,7 @@ class _Item extends State<Item> {
               'etat': etatController.text,
               'prix': prixController.text,
               'marque': marque,
-              'lieu': modeleController.text,
+              'lieu': modele,
               'carrosserie': type_carrosserieController.text,
               'modele': modele,
               'poignet': poignetController.text,
@@ -430,8 +430,9 @@ class _Item extends State<Item> {
       name.text = widget.marque['name'];
       codeController.text = widget.marque['code'].toString();
       etatController.text = widget.marque['etat'].toString();
-      prixController.text = widget.marque['prix'].toString();
       modele = widget.marque['modele'].toString();
+      marque = widget.marque['marque'].toString();
+      prixController.text = widget.marque['prix'].toString();
       type_carrosserieController.text = widget.marque['carrosserie'].toString();
       poignetController.text = widget.marque['poignet'].toString();
       carburantController.text = widget.marque['carburant'].toString();
@@ -451,7 +452,7 @@ class _Item extends State<Item> {
     final Stream<QuerySnapshot> _marqueStream = FirebaseFirestore.instance
         .collection('donnees').doc('${widget.type}').collection('marque').snapshots();
     final Stream<QuerySnapshot> _modeleStream = FirebaseFirestore.instance
-        .collection('donnees').doc('${widget.type}').collection('modeled').snapshots();
+        .collection('donnees').doc('${widget.type}').collection('modele').snapshots();
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -579,7 +580,8 @@ class _Item extends State<Item> {
                             return Text("Loading");
                           }
 
-                          return DropdownButton(
+                          return
+                            DropdownButton(
                             value: modele,
                             items: snapshot.data!.docs.map((DocumentSnapshot document) {
                               Map<String, dynamic> data = document.data()! as Map<String, dynamic>;

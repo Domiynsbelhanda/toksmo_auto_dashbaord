@@ -82,7 +82,22 @@ Widget itemTable (BuildContext context, String type, stream){
                                           marque: {
                                             'name' : data['name'],
                                             'image' : data['image'],
-                                            'key': data['key']
+                                            'key': data['key'],
+                                            'code': data['code'],
+                                            'etat': data['etat'],
+                                            'prix': data['prix'],
+                                            'marque': data['marque'],
+                                            'carrosserie': data['carrosserie'],
+                                            'modele': data['modele'],
+                                            'poignet': data['poignet'],
+                                            'carburant': data['carburant'],
+                                            'couleur': data['couleur'],
+                                            'kilometrage': data['kilometrage'],
+                                            'boite_vitesse': data['boite_vitesse'],
+                                            'nombre_siege': data['nombre_siege'],
+                                            'nombre_porte': data['nombre_porte'],
+                                            'annee': data['annee'],
+                                            'cylindre': data['cylindre'],
                                           },
                                         )
                                         ),

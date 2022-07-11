@@ -59,7 +59,7 @@ class _vehiculeIndex extends State<vehiculeIndex>{
                           MaterialPageRoute(builder: (context) => Marque(type: '${widget.type}')),
                         );
                       },
-                      child: Text('ADD MARQUE'),
+                      child: Text('MARQUE'),
                     ),
 
                     OutlinedButton(
@@ -69,7 +69,7 @@ class _vehiculeIndex extends State<vehiculeIndex>{
                           MaterialPageRoute(builder: (context) => Modele(type: '${widget.type}')),
                         );
                       },
-                      child: Text('ADD MODELE'),
+                      child: Text('MODELE'),
                     ),
 
                     OutlinedButton(
@@ -79,7 +79,7 @@ class _vehiculeIndex extends State<vehiculeIndex>{
                           MaterialPageRoute(builder: (context) => Item(type: '${widget.type}')),
                         );
                       },
-                      child: Text('ADD ITEM'),
+                      child: Text('ITEM'),
                     )
                   ],
                 ),
@@ -115,7 +115,7 @@ class _vehiculeIndex extends State<vehiculeIndex>{
                                   }
 
                                   return Text(
-                                      '${snapshot.data!.docs.length.toString()} Marque(s)'
+                                      '${snapshot.data!.docs.length.toString()} Marque'
                                   );
                                 },
                               ),
@@ -139,7 +139,7 @@ class _vehiculeIndex extends State<vehiculeIndex>{
                             padding: const EdgeInsets.all(16.0),
                             child: Center(
                               child: StreamBuilder<QuerySnapshot>(
-                                stream: _marqueStream,
+                                stream: _modeleStream,
                                 builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
                                   if (snapshot.hasError) {
                                     return Text('Error');
@@ -150,7 +150,7 @@ class _vehiculeIndex extends State<vehiculeIndex>{
                                   }
 
                                   return Text(
-                                      '${snapshot.data!.docs.length.toString()} Modele(s)'
+                                      '${snapshot.data!.docs.length.toString()} Modele'
                                   );
                                 },
                               ),
@@ -185,7 +185,7 @@ class _vehiculeIndex extends State<vehiculeIndex>{
                                   }
 
                                   return Text(
-                                      '${snapshot.data!.docs.length.toString()} Item (s)'
+                                      '${snapshot.data!.docs.length.toString()} Item'
                                   );
                                 },
                               ),
